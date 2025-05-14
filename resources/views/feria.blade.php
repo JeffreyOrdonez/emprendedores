@@ -17,7 +17,7 @@
 
 <form action="/nuevaferia" method="POST">
     @csrf
-    <label for="nombreferia">Nombre</label>
+    <label for="nombre">Nombre</label>
     <input type="text" name ="nombreferia" id="nombreferia" required>
     <br>
 
@@ -31,6 +31,8 @@
 
     <label for="descripcion">Descripccion</label>
     <textarea name="descripcion" id="descripcion" cols="30" rows="10" required></textarea>
+
+    <button type="submit">Agregar</button>
 
 </form>
 </div>

@@ -1,29 +1,37 @@
 <?php
 
+
+use App\Http\Controllers\iniciocontroller;
+use App\Http\Controllers\feriacontroller;
+use App\Http\Controllers\emprendedorcontroller;
+use App\Http\Controllers\calendariocontroller;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
-
-
-Route::get('/inicio',function () {
-    return view('inicio');
-});
-
-Route::get('/calendario',function(){
-    return view('calendario');
-});
 
 Route::get('/', function () {
     return view('inicio');
 });
 
-Route::get('/feria',function(){
-    return view('feria');
-});
+Route::get('/inicio', [iniciocontroller::class, 'index']);
 
-Route::get('/emprendedores',function(){
-    return view('emprendedores');
-});
+
+Route::get('/feria', [feriacontroller::class, 'index']);
+
+
+Route::get('/emprendedores', [emprendedorcontroller::class, 'index']);
+
+
+Route::get('/calendario', [calendariocontroller::class, 'index']);
+
+
+
+
+
+
+
+
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');
