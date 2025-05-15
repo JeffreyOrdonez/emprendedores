@@ -16,21 +16,17 @@ Route::get('/', function () {
 Route::get('/inicio', [iniciocontroller::class, 'index']);
 
 
-Route::get('/feria', [feriacontroller::class, 'index']);
+Route::get('/feria', function () {
+    return view('feria.index');
+});
 
+Route::get('/calendario', function () {
+    return view('calendario.index');
+});
 
-Route::get('/emprendedores', [emprendedorcontroller::class, 'index']);
-
-
-Route::get('/calendario', [calendariocontroller::class, 'index']);
-
-
-
-
-
-
-
-
+Route::get('/emprendedores', function () {
+    return view('emprendedores.index');
+});
 
 
 Route::get('/dashboard', function () {
