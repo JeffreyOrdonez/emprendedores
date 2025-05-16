@@ -1,0 +1,33 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+h1 {
+    color: var(--color-cafe-oscuro);
+}
+
+body {
+    margin: 0;
+    /*display: flex;
+    place-items: center;*/
+    min-width: 320px;
+    min-height: 100vh;
+    overflow-x: hidden;
+    font-family: 'Times New Roman', Times, serif;
+}
+nav a {
+    font-weight: bold;
+}
+
+nav a:hover {
+    color: #faac77
+}
+
+label {
+    color: var(--color-cafe-oscuro);
+    font-weight: bold;
+}
+
+:root {
+    --color-cafe-oscuro: #420f08;
+}
