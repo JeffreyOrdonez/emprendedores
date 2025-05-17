@@ -28,7 +28,7 @@ class feriascontroller extends Controller
         try{
             return view('ferias.create');
         }catch(\Exception $e){
-            return redirect()->route('derias.index')->with('error', 'error al cargar la pagina ferias :' . $e->getMessage());
+            return redirect()->route('ferias.index')->with('error', 'error al cargar la pagina ferias :' . $e->getMessage());
         }
     
     }
@@ -60,7 +60,8 @@ class feriascontroller extends Controller
     {
         try {
         $feria = feriasmodel::findOrFail($id);
-        return view('ferias.show', compact('feria'));
+        $emprendedores = $feria->emprendedores; 
+        return view('ferias.show', compact('feria','emprendedores'));
     } catch (\Exception $e) {
         return redirect()->route('ferias.index')->with('error', 'Error fetching feria: ' . $e->getMessage());
     }
@@ -72,7 +73,12 @@ class feriascontroller extends Controller
      */
     public function edit(string $id)
     {
-        //
+        try {
+        $feria = feriasmodel::findOrFail($id);
+        return view('ferias.edit', compact('feria'));
+    } catch (\Exception $e) {
+        return redirect()->route('ferias.index')->with('error', 'Error al cargar la feria para editar: ' . $e->getMessage());
+    }
       
     }
 
@@ -81,7 +87,21 @@ class feriascontroller extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+         try {
+        $validated = $request->validate([
+            'nombre' => 'required|string|max:255',
+            'fecha' => 'required|date',
+            'lugar' => 'required|string|max:255',
+            'descripcion' => 'required|string|max:1000',
+        ]);
+
+        $feria = feriasmodel::findOrFail($id);
+        $feria->update($validated);
+
+        return redirect()->route('ferias.index')->with('success', 'Feria actualizada correctamente.');
+    } catch (\Exception $e) {
+        return redirect()->route('ferias.edit', $id)->with('error', 'Error al actualizar la feria: ' . $e->getMessage());
+    }
        
     }
 
@@ -90,9 +110,17 @@ class feriascontroller extends Controller
      */
     public function destroy(string $id)
     {
-        //
+            try {
+        $feria = feriasmodel::findOrFail($id);
+        $feria->delete();
+        return redirect()->route('ferias.index')->with('success', 'Feria eliminada correctamente.');
+    } catch (\Exception $e) {
+        return redirect()->route('ferias.index')->with('error', 'Error al eliminar la feria: ' . $e->getMessage());
+    }
         
     }
+
+
 }
 
 

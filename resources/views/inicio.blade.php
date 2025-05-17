@@ -14,7 +14,6 @@
         <nav class="bg-gradient-to-r from-[#ff5858] to-[#f09819] fixed left-0 top-0 w-screen h-[40px] flex lg:flex-row flex-col justify-between items-center px-10">
             <div>
                 <a href="/inicio" class="mr-10">inicio</a>
-                <a href="/calendario" class="mr-10">calendario</a>
                 <a href="/ferias" class="mr-10">feria</a>
                 <a href="/emprendedores" class="mr-10">Participa</a>
             </div>

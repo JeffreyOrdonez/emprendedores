@@ -19,7 +19,7 @@ Route::middleware(['auth', 'verified'])->group(function()
 {
 route::resource('ferias', feriascontroller::class);
 route::resource('emprendedores', emprendedorcontroller::class);
-route::resource('calendario', calendariocontroller::class);
+
 route::resource('inicio', iniciocontroller::class);
 });
 Route::get('/dashboard', function () {
