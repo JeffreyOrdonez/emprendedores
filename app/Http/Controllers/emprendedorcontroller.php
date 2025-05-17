@@ -8,6 +8,8 @@ class emprendedorcontroller extends Controller
 {
     public function index(){
 
-        return view('emprendedores');
+        return view('emprendedores.index');
     }
+
+
 }

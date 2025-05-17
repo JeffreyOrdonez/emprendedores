@@ -15,7 +15,7 @@
             <div>
                 <a href="/inicio" class="mr-10">inicio</a>
                 <a href="/calendario" class="mr-10">calendario</a>
-                <a href="/feria" class="mr-10">feria</a>
+                <a href="/ferias" class="mr-10">feria</a>
                 <a href="/emprendedores" class="mr-10">Participa</a>
             </div>
         </nav>

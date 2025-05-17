@@ -2,7 +2,7 @@
 
 
 use App\Http\Controllers\iniciocontroller;
-use App\Http\Controllers\feriacontroller;
+use App\Http\Controllers\feriascontroller;
 use App\Http\Controllers\emprendedorcontroller;
 use App\Http\Controllers\calendariocontroller;
 use App\Http\Controllers\ProfileController;
@@ -10,27 +10,20 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 
 Route::get('/', function () {
-    return view('inicio');
-});
-
-Route::get('/inicio', [iniciocontroller::class, 'index']);
-
-
-Route::get('/feria', function () {
-    return view('feria.index');
-});
-
-Route::get('/calendario', function () {
-    return view('calendario.index');
-});
-
-Route::get('/emprendedores', function () {
-    return view('emprendedores.index');
+    return view('welcome');
 });
 
 
+
+Route::middleware(['auth', 'verified'])->group(function()
+{
+route::resource('ferias', feriascontroller::class);
+route::resource('emprendedores', emprendedorcontroller::class);
+route::resource('calendario', calendariocontroller::class);
+route::resource('inicio', iniciocontroller::class);
+});
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    return view('inicio');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {

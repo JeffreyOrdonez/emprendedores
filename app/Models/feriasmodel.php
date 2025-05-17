@@ -6,7 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class feriasmodel extends Model
 {
-    protected $fillable = ['nombre', 'fecha', 'hora', 'lugar', 'descripcion'];
+    protected $table = 'ferias';
+    protected $fillable = ['nombre', 'fecha', 'lugar', 'descripcion'];
 
  
  
