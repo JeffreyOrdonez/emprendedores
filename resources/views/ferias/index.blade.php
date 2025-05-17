@@ -55,10 +55,23 @@
                             <td class="border px-4 py-2">{{ $feria->fecha }}</td>
                             <td class="border px-4 py-2">{{ $feria->lugar }}</td>
                             <td class="border px-4 py-2">{{ $feria->descripcion }}</td>
-                            <td class="border px-4 py-2">
-                                <a href="{{ route('ferias.show', $feria->id) }}" class="text-blue-600 hover:underline">Ver</a>
-                                <a href="{{ route('ferias.edit', $feria->id) }}" class="text-yellow-600 hover:underline ml-2">Editar</a>
-                                <!-- Aquí puedes agregar un formulario para eliminar si lo deseas -->
+                            <td class="border px-4 py-2 flex flex-row gap-1">
+                              
+                                <a href="{{ route('ferias.edit', $feria->id) }}"
+                                   class="px-2 py-1 rounded bg-yellow-400 text-white text-xs font-semibold hover:bg-yellow-500 transition"
+                                   title="Editar">
+                                    Editar
+                                </a>
+                                <form action="{{ route('ferias.destroy', $feria->id) }}" method="POST" style="display:inline;">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit"
+                                            onclick="return confirm('¿Seguro que deseas eliminar esta feria?')"
+                                            class="px-2 py-1 rounded bg-red-500 text-white text-xs font-semibold hover:bg-red-600 transition"
+                                            title="Eliminar">
+                                        Eliminar
+                                    </button>
+                                </form>
                             </td>
                         </tr>
                     @empty
@@ -69,7 +82,6 @@
                 </tbody>
             </table>
             <div class="mt-4">
-                {{-- Solo muestra la paginación si $ferias es un LengthAwarePaginator --}}
                 @if(method_exists($ferias, 'links'))
                     {{ $ferias->links() }}
                 @endif
