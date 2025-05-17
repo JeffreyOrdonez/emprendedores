@@ -11,7 +11,6 @@
     <nav class="bg-gradient-to-r from-[#ff5858] to-[#f09819] fixed left-0 top-0 w-screen h-[40px] flex lg:flex-row flex-col justify-between items-center px-10">
         <div>
             <a href="/inicio" class="mr-10">inicio</a>
-            <a href="/calendario" class="mr-10">calendario</a>
             <a href="/ferias" class="mr-10">ferias</a>
             <a href="/emprendedores" class="mr-10">Participa</a>
         </div>
@@ -22,24 +21,42 @@
             <h1 class="text-3xl font-bold mb-8 text-center">Detalle de Feria</h1>
             <div class="mb-4">
                 <strong>Nombre:</strong>
-                <span>{{ $ferias->nombre }}</span>
+                <span>{{ $feria->nombre }}</span>
             </div>
             <div class="mb-4">
                 <strong>Fecha:</strong>
-                <span>{{ $ferias->fecha }}</span>
+                <span>{{ $feria->fecha }}</span>
             </div>
             <div class="mb-4">
                 <strong>Lugar:</strong>
-                <span>{{ $ferias->lugar }}</span>
+                <span>{{ $feria->lugar }}</span>
             </div>
             <div class="mb-4">
                 <strong>Descripción:</strong>
-                <span>{{ $ferias->descripcion }}</span>
+                <span>{{ $feria->descripcion }}</span>
             </div>
+
+            @if($emprendedores->count())
+        <div class="mb-4">
+        <strong>Emprendedores inscritos:</strong>
+        <ul class="list-disc ml-6">
+            @foreach($emprendedores as $emprendedor)
+                <li>
+                    {{ $emprendedor->nombre }} - {{ $emprendedor->servicio }} - {{ $emprendedor->telefono }}
+                </li>
+            @endforeach
+        </ul>
+         </div>
+        @else
+        <div class="mb-4">
+        <strong>No hay emprendedores inscritos en esta feria.</strong>
+        </div>
+        @endif
             <div class="flex justify-between mt-8">
                 <a href="{{ route('ferias.index') }}" class="px-4 py-2 rounded bg-gray-300 hover:bg-gray-400">Volver</a>
                 <a href="{{ route('ferias.edit', $feria->id) }}" class="px-4 py-2 rounded bg-gradient-to-r from-[#ff5858] to-[#f09819] text-white font-bold hover:scale-105 transition">Editar</a>
             </div>
+            
         </div>
     </div>
 </body>

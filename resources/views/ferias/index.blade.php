@@ -11,7 +11,6 @@
     <nav class="bg-gradient-to-r from-[#ff5858] to-[#f09819] fixed left-0 top-0 w-screen h-[40px] flex lg:flex-row flex-col justify-between items-center px-10">
         <div>
             <a href="/inicio" class="mr-10">inicio</a>
-            <a href="/calendario" class="mr-10">calendario</a>
             <a href="/ferias" class="mr-10">ferias</a>
             <a href="/emprendedores" class="mr-10">Participa</a>
         </div>
@@ -56,7 +55,11 @@
                             <td class="border px-4 py-2">{{ $feria->lugar }}</td>
                             <td class="border px-4 py-2">{{ $feria->descripcion }}</td>
                             <td class="border px-4 py-2 flex flex-row gap-1">
-                              
+                              <a href="{{ route('ferias.show', $feria->id) }}"
+                                 class="px-2 py-1 rounded bg-blue-500 text-white text-xs font-semibold hover:bg-blue-600 transition"
+                                  title="Ver">
+                                   Ver
+                                </a>
                                 <a href="{{ route('ferias.edit', $feria->id) }}"
                                    class="px-2 py-1 rounded bg-yellow-400 text-white text-xs font-semibold hover:bg-yellow-500 transition"
                                    title="Editar">

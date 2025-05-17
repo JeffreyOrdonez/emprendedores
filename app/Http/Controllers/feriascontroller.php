@@ -60,7 +60,8 @@ class feriascontroller extends Controller
     {
         try {
         $feria = feriasmodel::findOrFail($id);
-        return view('ferias.show', compact('feria'));
+        $emprendedores = $feria->emprendedores; 
+        return view('ferias.show', compact('feria','emprendedores'));
     } catch (\Exception $e) {
         return redirect()->route('ferias.index')->with('error', 'Error fetching feria: ' . $e->getMessage());
     }
@@ -118,6 +119,8 @@ class feriascontroller extends Controller
     }
         
     }
+
+
 }
 
 
